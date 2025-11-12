@@ -1,0 +1,19 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Virtual envs and env files
+venv/
+.env
+
+# Data and outputs
+out/
+*.npy
+*.xlsx
+*.csv
+
+# Keep project_data as user-managed; if you want to include it, remove it from this ignore list
+# project_data/
