@@ -13,7 +13,12 @@ venv/
 out/
 *.npy
 *.xlsx
+# Ignore ALL csv files except for results
 *.csv
+
+# Whitelist results CSVs
+!reports/results/*.csv
+
 
 # Keep project_data as user-managed; if you want to include it, remove it from this ignore list
 # project_data/
