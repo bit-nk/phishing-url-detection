@@ -128,7 +128,7 @@ This repository includes:
 Clone and reproduce:
 
 ```bash
-git clone https://github.com/<your-username>/phishing-url-detection.git
+git clone https://github.com/bit-nk/phishing-url-detection.git
 cd phishing-url-detection
 python -m venv venv
 source venv/bin/activate
