@@ -4,7 +4,7 @@ This repository implements a fully reproducible phishing-URL detection pipeline 
 
 ---
 
-## 📁 Repository Structure
+## Repository Structure
 
 ```
 phishing-url-detection/
