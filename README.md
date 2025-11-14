@@ -1,7 +1,6 @@
-# Phishing URL Detection — Reproducible Repo (Template)
+# Phishing URL Detection: Reproducible Repo (Template)
 
-This repository is a reproducible template for your Phishing-URL Detection project, following the Data Ethics & Reproducibility Workshop guidelines.
-It is customized for the scripts you already have: `build_phishing_dataset.py` and `evaluate_models.py`.
+This repository is a reproducible template for the Phishing-URL Detection project.
 
 ## Structure (what to fill)
 - `src/` : core scripts (data build + evaluation)
