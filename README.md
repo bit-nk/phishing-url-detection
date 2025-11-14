@@ -1,36 +1,157 @@
-# Phishing URL Detection: Reproducible Repo (Template)
+# Phishing URL Detection — Reproducible Machine Learning Pipeline
 
-This repository is a reproducible template for the Phishing-URL Detection project.
+This repository implements a fully reproducible phishing-URL detection pipeline using lexical feature extraction, structured dataset merging, and machine-learning models. It follows the Data Ethics & Reproducibility Workshop guidelines and includes complete documentation, datasets, and reproducible scripts.
 
-## Structure (what to fill)
-- `src/` : core scripts (data build + evaluation)
-- `project_data/` : raw datasets (place your CSV/ARFF files here)
-- `out/` : pipeline outputs (will be created by scripts; kept out of git)
-- `reports/figures` and `reports/results` : final figures and result tables for the paper
-- `metadata/` : DATA_README.md, ETHICS.md, LICENSE
+---
 
-## Quick start (example)
-1. Create and activate a Python virtual environment
+## 📁 Repository Structure
+
+```
+phishing-url-detection/
+│
+├── src/                     # Core pipeline scripts
+│   ├── build_phishing_dataset.py
+│   ├── evaluate_models.py
+│
+├── project_data/            # Raw datasets (CSV/ARFF files placed here)
+│   └── sample_data.csv
+│
+├── out/                     # Auto-generated outputs (ignored by git)
+│
+├── reports/
+│   ├── figures/             # Final visualizations for publication
+│   └── results/             # Final evaluation tables
+│
+├── metadata/
+│   ├── DATA_README.md
+│   ├── ETHICS.md
+│   └── LICENSE
+│
+├── notebooks/               # Optional Jupyter notebooks
+│
+├── requirements.txt         # Python environment requirements
+├── run.sh                   # Reproducible one-command pipeline
+└── README.md
+```
+
+---
+
+## Quick Start
+
+### 1. Create and activate a virtual environment
 ```bash
 python -m venv venv
-source venv/bin/activate
+source venv/bin/activate      # Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-2. Put your dataset files into `project_data/` (or keep the sample_data.csv for a small demo).
+---
 
-3. Run the data build (feature extraction + merge):
-```bash
-python src/build_phishing_dataset.py --raw project_data/sample_data.csv --out_dir out --do_scale --do_smote
+### 2. Add datasets
+Place all raw CSV and ARFF dataset files into:
+
+```
+project_data/
 ```
 
-4. Run model evaluation:
+A small testing file (`sample_data.csv`) is included to allow the pipeline to run without large datasets.
+
+---
+
+### 3. Build the unified dataset
+This step performs URL ingestion, lexical feature extraction, structured dataset loading, schema normalization,
+deduplication, imputation, and optional scaling/SMOTE.
+
+```bash
+python src/build_phishing_dataset.py     --raw project_data/Phishing_URLs.csv project_data/top_1m.csv     --structured project_data/Phishing_Legitimate_full.csv     --out_dir out --do_scale --do_smote
+```
+
+Outputs (saved to `out/`):
+- unified_clean.csv  
+- X.npy / y.npy  
+- prep_meta.json  
+
+---
+
+### 4. Train and evaluate models
+
 ```bash
 python src/evaluate_models.py
 ```
 
-5. Results and figures will appear under `out/` and can be copied to `reports/` for publication.
+This produces:
+- Confusion matrices  
+- Performance charts  
+- Efficiency comparisons  
+- Model metrics (AUC, F1, precision, recall, time, memory)
 
-## Notes
-- This template follows the steps outlined in your `CSC786_Ethics_Demo_ST.ipynb` notebook: prepare data → extract features → merge & clean → scale & SMOTE → train baselines → evaluate efficiency & save figures.
-- Replace `project_data/sample_data.csv` with your full datasets when ready.
+Copy the final outputs to:
+
+```
+reports/figures/
+reports/results/
+```
+
+---
+
+## Features & Models
+
+### Extracted Features (25 total)
+- URL length, entropy  
+- Digit/symbol counts  
+- Slash/dot/hyphen counts  
+- TLD length  
+- Subdomain count  
+- Sensitive keyword flags  
+- HTTPS flag  
+- IP address detection  
+- And more…
+
+### Models Evaluated
+- Logistic Regression  
+- Random Forest  
+- Gradient Boosting  
+- LightGBM  
+
+---
+
+## Reproducibility
+
+This repository includes:
+- Complete preprocessing + training scripts  
+- Full dataset provenance  
+- Ethical statement  
+- Environment specification  
+- One-command `run.sh` execution  
+- All final results and figures  
+
+Clone and reproduce:
+
+```bash
+git clone https://github.com/<your-username>/phishing-url-detection.git
+cd phishing-url-detection
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+bash run.sh
+```
+
+---
+
+## Ethics & Data Usage
+
+See `metadata/ETHICS.md` and `metadata/DATA_README.md` for:
+- Data licensing  
+- No-PII guarantees  
+- Harm minimization  
+- Misuse prevention  
+- False-positive secret detection notice  
+
+---
+
+## Citation
+
+```
+Nirvik KC, "Hybrid Machine Learning-based Phishing URL Detection,"
+CSC786: Special Topics in AI, Dakota State University, 2025.
+```
