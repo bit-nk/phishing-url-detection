@@ -1,4 +1,4 @@
-# Phishing URL Detection — Reproducible Machine Learning Pipeline
+# Phishing URL Detection: Reproducible Machine Learning Pipeline
 
 This repository implements a fully reproducible phishing-URL detection pipeline using lexical feature extraction, structured dataset merging, and machine-learning models. It follows the Data Ethics & Reproducibility Workshop guidelines and includes complete documentation, datasets, and reproducible scripts.
 
